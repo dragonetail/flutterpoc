@@ -17,9 +17,9 @@
 
 **分支：** <https://github.com/dragonetail/flutterpoc/tree/counter_refactor>
 
-**目标：**根据Flutter缺省计数器例子，遵循Bloc的理念实现增减计数器的逻辑和视图分离。
+**目标：** 根据Flutter缺省计数器例子，遵循Bloc的理念实现增减计数器的逻辑和视图分离。
 
-文档：[BLOC重构Counter实现](./docs/1-counter_refactor.md)
+**文档：** [BLOC重构Counter实现](./docs/1-counter_refactor.md)
 
 
 
