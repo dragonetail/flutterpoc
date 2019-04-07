@@ -15,7 +15,7 @@
 
 ## BLOC重构Counter实现
 
-说明：本部分完成部分在tag：
+说明：本部分完成部分在分支： <https://github.com/dragonetail/flutterpoc/tree/counter_refactor>
 
 1. 使用fluter命令创建APP，然后在pubspec.yaml中追加依赖
 
