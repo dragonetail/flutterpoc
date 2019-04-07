@@ -1,27 +1,43 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
-import './bloc.dart';
+import '../blocs.dart';
 
-class CounterBloc extends Bloc<CounterEvent, CounterState> {
+class CounterBloc extends BaseBloc<CounterEvent, CounterState> {
   @override
   CounterState get initialState => CountingState(0);
 
   @override
-  Stream<CounterState> mapEventToState(
-    CounterEvent event,
-  ) async* {
-    if (event is IncrementEvent) {
-      yield* _mapIncrementEventToState();
-    } else if (event is DecrementEvent) {
-      yield* _mapDecrementEventState(event);
-    }
-  }
+  Map<Type, Function(CounterEvent)> get mapper => {
+        IncrementEvent: _mapIncrementEventToState,
+        DecrementEvent: _mapDecrementEventState,
+      };
 
-  Stream<CountingState> _mapIncrementEventToState() async* {
+  Stream<CounterState> _mapIncrementEventToState(CounterEvent event) async* {
     yield CountingState((currentState as CountingState).counter + 1);
   }
 
-  Stream<CountingState> _mapDecrementEventState(DecrementEvent event) async* {
+  Stream<CounterState> _mapDecrementEventState(CounterEvent event) async* {
     yield CountingState((currentState as CountingState).counter - 1);
+  }
+}
+
+
+ 
+//Event定义
+abstract class CounterEvent extends BaseEvent{}
+class IncrementEvent extends CounterEvent{}
+class DecrementEvent extends CounterEvent{}
+
+//State定义
+abstract class CounterState extends BaseState{
+  CounterState([List props = const []]) : super(props);
+}
+class CountingState extends CounterState {
+  final int counter;
+
+  CountingState(this.counter) : super([counter]);
+
+  @override
+  String toString() {
+    return 'CountingState { counter: $counter }';
   }
 }
