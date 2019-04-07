@@ -23,8 +23,6 @@
 
 
 
-
-
 ## TODO
 
 - 通过Dict类似模式优化Bloc中mapEventToState的if级联判断模式。
