@@ -23,6 +23,16 @@
 
 
 
+## 2、BLOC重构Counter实现（BLOC逻辑处理工程简化）
+
+**分支：**  <https://github.com/dragonetail/flutterpoc/tree/2-counter_refactor_simplication>>
+
+**目标：** 根据Flutter缺省计数器例子，遵循Bloc的理念实现增减计数器的逻辑和视图分离，在第一步的基础上，抽取BaseBloc实现，简化Bloc的处理逻辑和工程化。
+
+**文档：** [BLOC重构Counter实现和工程简化](./docs/2-counter_refactor_simplication.md)
+
+
+
 ## TODO
 
 - 通过Dict类似模式优化Bloc中mapEventToState的if级联判断模式。

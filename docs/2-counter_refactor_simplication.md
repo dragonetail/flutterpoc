@@ -1,4 +1,4 @@
-# BLOC重构Counter实现（BLOC逻辑处理简化）
+# BLOC重构Counter实现（BLOC逻辑处理工程简化）
 
 **说明：** 本部分完成部分在分支： <https://github.com/dragonetail/flutterpoc/tree/2-counter_refactor_simplication>
 
