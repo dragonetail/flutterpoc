@@ -8,22 +8,22 @@ class CounterBloc extends BaseBloc<CounterEvent, CounterState> {
   @override
   Map<Type, Function(CounterEvent)> get mapper => {
         IncrementEvent: _mapIncrementEventToState,
-        DecrementEvent: _mapDecrementEventState,
+        DecrementEvent: _mapDecrementEventToState,
       };
 
   Stream<CounterState> _mapIncrementEventToState(CounterEvent event) async* {
     yield CountingState((currentState as CountingState).counter + 1);
   }
 
-  Stream<CounterState> _mapDecrementEventState(CounterEvent event) async* {
+  Stream<CounterState> _mapDecrementEventToState(CounterEvent event) async* {
     yield CountingState((currentState as CountingState).counter - 1);
   }
 }
 
-
- 
 //Event定义
-abstract class CounterEvent extends BaseEvent{}
+abstract class CounterEvent extends BaseEvent{
+  CounterEvent([List props = const []]) : super(props);
+}
 class IncrementEvent extends CounterEvent{}
 class DecrementEvent extends CounterEvent{}
 
