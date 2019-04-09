@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterpoc/blocs/blocs.dart';
-import 'package:flutterpoc/widgets/widgets.dart';
+import 'package:flutterpoc/blocs/index.dart';
+import 'package:flutterpoc/widgets/index.dart';
 
 class CounterPage extends StatefulWidget {
   CounterPage({Key key}) : super(key: key);
@@ -50,5 +50,11 @@ class _CounterPageState extends State<CounterPage> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _counterBloc.dispose();
+    super.dispose();
   }
 }

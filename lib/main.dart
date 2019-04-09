@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutterpoc/blocs/blocs.dart';
-import 'package:flutterpoc/pages/pages.dart';
+import 'package:flutterpoc/common/index.dart';
+import 'package:flutterpoc/pages/index.dart';
 
-void main() {
+void main() async {
   BlocSupervisor().delegate = SimpleBlocDelegate();
 
   runApp(MyApp());
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/Main': (ctx) => CounterPage(),
       },
-      //home: new SplashPage(),
-      home: CounterPage(),
+      // home: CounterPage(),
+      home: SplashPage(),
     );
   }
 }

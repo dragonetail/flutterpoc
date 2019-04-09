@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterpoc/blocs/blocs.dart';
+import 'package:flutterpoc/blocs/index.dart';
+import 'package:flutterpoc/common/index.dart';
 
 class CountingText extends StatelessWidget {
   CountingText({
@@ -13,11 +12,11 @@ class CountingText extends StatelessWidget {
   Widget build(BuildContext context) {
     final CounterBloc _counterBloc = BlocProvider.of<CounterBloc>(context);
 
-    return BlocBuilder<CounterEvent, CounterState>(
+    return BlocBuilder<BaseEvent, BaseState>(
       bloc: _counterBloc,
-      builder: (BuildContext context, CounterState counterState) {
+      builder: (BuildContext context, BaseState baseState) {
         return Text(
-          '${(counterState as CountingState).counter}',
+          '${(baseState as CountingState).counter}',
           style: TextStyle(fontSize: 24.0),
         );
       },

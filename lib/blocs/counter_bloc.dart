@@ -1,37 +1,31 @@
 import 'dart:async';
-import './blocs.dart';
+import 'package:flutterpoc/common/index.dart';
 
-class CounterBloc extends BaseBloc<CounterEvent, CounterState> {
+class CounterBloc extends BaseBloc<BaseEvent, BaseState> {
   @override
-  CounterState get initialState => CountingState(0);
+  BaseState get initialState => CountingState(0);
 
   @override
-  Map<Type, Function(CounterEvent)> get mapper => {
+  Map<Type, Function(BaseEvent)> get mapper => {
         IncrementEvent: _mapIncrementEventToState,
         DecrementEvent: _mapDecrementEventToState,
       };
 
-  Stream<CounterState> _mapIncrementEventToState(CounterEvent event) async* {
+  Stream<BaseState> _mapIncrementEventToState(BaseEvent event) async* {
     yield CountingState((currentState as CountingState).counter + 1);
   }
 
-  Stream<CounterState> _mapDecrementEventToState(CounterEvent event) async* {
+  Stream<BaseState> _mapDecrementEventToState(BaseEvent event) async* {
     yield CountingState((currentState as CountingState).counter - 1);
   }
 }
 
 //Event定义
-abstract class CounterEvent extends BaseEvent{
-  CounterEvent([List props = const []]) : super(props);
-}
-class IncrementEvent extends CounterEvent{}
-class DecrementEvent extends CounterEvent{}
+class IncrementEvent extends BaseEvent{}
+class DecrementEvent extends BaseEvent{}
 
 //State定义
-abstract class CounterState extends BaseState{
-  CounterState([List props = const []]) : super(props);
-}
-class CountingState extends CounterState {
+class CountingState extends BaseState {
   final int counter;
 
   CountingState(this.counter) : super([counter]);
