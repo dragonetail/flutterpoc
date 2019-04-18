@@ -4,14 +4,22 @@ import 'package:flutterpoc/models/index.dart';
 import 'package:flutterpoc/common/index.dart';
 
 class SpService {
-  static const String splash_guide_mode = 'splash.guide.mode';
+  static const String splash_ad_mode = 'splash.ad.mode';
   static const String splash_ad_model = 'splash.ad.model';
   static const String splash_guide_model = 'splash.guide.model';
 
   static final SpUtils spUtils = SpUtils.instance;
 
-  static bool isSplashGuideMode() {
-    return spUtils.getBool(splash_guide_mode);
+  static bool isSplashAdMode() {
+    return spUtils.getBool(splash_ad_mode);
+  }
+
+  static void clearSplashAdMode() {
+    spUtils.remove(splash_ad_mode);
+  }
+
+  static void setSplashAdMode() {
+    spUtils.putBool(splash_ad_mode, true);
   }
 
   static SplashAdModel getSplashAdModel([SplashAdModel defaultValue]) {

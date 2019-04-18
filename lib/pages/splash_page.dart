@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterpoc/common/index.dart';
 import 'package:flutterpoc/models/index.dart';
 import 'package:flutterpoc/blocs/index.dart';
+import 'package:flutterpoc/services/index.dart';
 
 class SplashPage extends StatefulWidget {
   SplashPage({Key key}) : super(key: key);
@@ -25,10 +26,7 @@ class _SplashPageState extends State<SplashPage> {
           } else if (baseState is SplashAdState) {
             return buildSplashAdWidget(baseState);
           } else {
-            return Text(
-              '${(baseState as CountingState).counter}',
-              style: TextStyle(fontSize: 24.0),
-            );
+            return Container();
           }
         },
       ),
@@ -57,7 +55,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _nextActionFromGuide() {
-    //SpUtil.putBool(Constant.key_guide_images, true);
+    SpService.setSplashAdMode();
     Navigator.of(context).pushReplacementNamed('/Main');
   }
 

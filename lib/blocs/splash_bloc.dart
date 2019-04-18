@@ -14,10 +14,10 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
   void _init() async {
     //等待SP初始化完毕
     await SpUtils.instance.initializationDone;
-    if (SpService.isSplashGuideMode()) {
-      this.dispatch(SplashGuideEvent());
-    } else {
+    if (SpService.isSplashAdMode()) {
       this.dispatch(SplashAdEvent());
+    } else {
+      this.dispatch(SplashGuideEvent());
     }
   }
 
@@ -32,10 +32,10 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
         SpService.getSplashGuideModel(SplashGuideModel(
       isUrl: false,
       images: [
-        Utils.getImgPath('guide1'),
-        Utils.getImgPath('guide2'),
-        Utils.getImgPath('guide3'),
-        Utils.getImgPath('guide4'),
+        Utils.getImgPath('guide1', format: 'jpg'),
+        Utils.getImgPath('guide2', format: 'jpg'),
+        Utils.getImgPath('guide3', format: 'jpg'),
+        Utils.getImgPath('guide4', format: 'jpg'),
       ],
       textInfos: [
         "在你需要的每个地方",
@@ -67,6 +67,7 @@ class SplashAdEvent extends BaseEvent {}
 class SplashInitialState extends BaseState {
   SplashInitialState() : super();
 }
+
 class SplashGuideState extends BaseState {
   final SplashGuideModel splashGuideModel;
 

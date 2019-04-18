@@ -39,6 +39,8 @@ dependencies:
   #synchronized: '>=0.1.0 <3.0.0'
   # https://github.com/flutter/plugins/tree/master/packages/shared_preferences
   shared_preferences: '>=0.1.1 <1.0.0'
+  # https://github.com/flutterchina/dio
+  dio: ^2.1.2
 
 dev_dependencies:
   flutter_test:
