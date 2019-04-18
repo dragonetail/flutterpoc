@@ -49,10 +49,10 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
 
   Stream<BaseState> _mapSplashAdEventToState(BaseEvent event) async* {
     SplashAdModel splashAdModel = SpService.getSplashAdModel(SplashAdModel(
-      title: 'Flutter 常用工具类库',
+      title: '带你去旅行',
       imageUrl:
-          'https://raw.githubusercontent.com/Sky24n/LDocuments/master/AppImgs/flutter_common_utils_a.png',
-      targetUrl: 'https://www.jianshu.com/p/425a7ff9d66e',
+          'https://github.com/dragonetail/flutterpoc/blob/master/assets/images/3.0x/ad.jpg',
+      targetUrl: 'https://github.com/dragonetail/flutterpoc/',
     ));
     yield SplashAdState(splashAdModel);
   }
