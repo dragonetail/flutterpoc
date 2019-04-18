@@ -3,5 +3,10 @@
         "nextShowGuide": true,
         "updateGuideInfo": false,
         "updateAdInfo": false
+    },
+    "splash1": {
+        "nextShowGuide": true,
+        "updateGuideInfo": false,
+        "updateAdInfo": false
     }
 }
