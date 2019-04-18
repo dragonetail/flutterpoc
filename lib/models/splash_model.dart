@@ -1,27 +1,47 @@
+import './index.dart';
+
 class SplashModel {
+  String version;
   bool nextShowGuide;
   bool updateGuideInfo;
   bool updateAdInfo;
+  SplashGuideModel guideInfo;
+  SplashAdModel adInfo;
 
-  SplashModel({this.nextShowGuide, this.updateGuideInfo, this.updateAdInfo});
+  SplashModel(
+      {this.version,
+      this.nextShowGuide,
+      this.updateGuideInfo,
+      this.updateAdInfo,
+      this.guideInfo,
+      this.adInfo});
 
   SplashModel.fromJson(Map<String, dynamic> json)
-      : nextShowGuide = json['nextShowGuide'],
+      : version = json['version'],
+        nextShowGuide = json['nextShowGuide'],
         updateGuideInfo = json['updateGuideInfo'],
-        updateAdInfo = json['updateAdInfo'];
+        updateAdInfo = json['updateAdInfo'],
+        guideInfo = SplashGuideModel.fromJson(json['guideInfo']),
+        adInfo = SplashAdModel.fromJson(json['adInfo']);
 
   Map<String, dynamic> toJson() => {
+        'version': version,
         'nextShowGuide': nextShowGuide,
         'updateGuideInfo': updateGuideInfo,
         'updateAdInfo': updateAdInfo,
+        'guideInfo': guideInfo,
+        'adInfo': adInfo,
       };
 
   @override
   String toString() {
     StringBuffer sb = new StringBuffer('{');
+    sb.write("\"version\":\"$version\"");
     sb.write("\"nextShowGuide\":\"$nextShowGuide\"");
     sb.write(",\"updateGuideInfo\":\"$updateGuideInfo\"");
     sb.write(",\"updateAdInfo\":\"$updateAdInfo\"");
+    sb.write(",\"guideInfo\":\"$guideInfo\"");
+    sb.write(",\"adInfo\":\"$adInfo\"");
     sb.write('}');
     return sb.toString();
   }

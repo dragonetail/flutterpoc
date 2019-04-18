@@ -3,12 +3,12 @@ import 'package:bloc/bloc.dart';
 import 'package:flutterpoc/common/index.dart';
 import 'package:flutterpoc/pages/index.dart';
 
-import 'package:flutterpoc/api/index.dart';
+//import 'package:flutterpoc/api/index.dart';
 
 void main() async {
   BlocSupervisor().delegate = SimpleBlocDelegate();
 
-  await SplashApi.getSplashMode();
+  //await SplashApi.getSplashMode();
 
   runApp(MyApp());
 }

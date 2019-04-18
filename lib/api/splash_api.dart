@@ -22,10 +22,4 @@ class SplashApi {
       }
     }
   }
-
-  // dio.post("http://10.1.10.250:3000",data:{"a":1}).then((r) {
-  //   setState(() {
-  //     _text = r.data.replaceAll(RegExp(r"\s"), "");
-  //   });
-  // }).catchError(print);
 }
