@@ -1,5 +1,5 @@
 {
-    "nextShowGuide": true,
-    "updateGuideInfo": false,
-    "updateAdInfo": false
+    "nextShowGuide": "true",
+    "updateGuideInfo": "false",
+    "updateAdInfo": "false"
 }

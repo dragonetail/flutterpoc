@@ -3,7 +3,7 @@ import 'package:flutterpoc/models/index.dart';
 
 class SplashApi {
   static const String splash_base_url =
-      'https://github.com/dragonetail/flutterpoc/tree/master/lib/mockdata/splash';
+      'https://raw.githubusercontent.com/dragonetail/flutterpoc/master/lib/mockdata/splash/';
 
   static Future<SplashModel> getSplashMode() async {
     {
