@@ -55,7 +55,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _nextActionFromGuide() {
-    SpService.setSplashAdMode();
+    SplashService.setSplashAdMode();
     Navigator.of(context).pushReplacementNamed('/Main');
   }
 

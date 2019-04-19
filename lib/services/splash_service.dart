@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:flutterpoc/models/index.dart';
 import 'package:flutterpoc/common/index.dart';
+import 'package:flutterpoc/api/index.dart';
 
-class SpService {
+class SplashService {
+  static const String splash_version = 'splash.version';
   static const String splash_ad_mode = 'splash.ad.mode';
   static const String splash_ad_model = 'splash.ad.model';
   static const String splash_guide_model = 'splash.guide.model';
@@ -40,20 +42,28 @@ class SpService {
     return defaultValue;
   }
 
-  static void updateSplashGuideModel() {
-    //TODO
-    // HttpUtils httpUtil = new HttpUtils();
-    //   httpUtil.getSplash().then((model) {
-    //     if (!ObjectUtil.isEmpty(model.imgUrl)) {
-    //       if (_splashModel == null || (_splashModel.imgUrl != model.imgUrl)) {
-    //         SpHelper.putObject(Constant.key_splash_model, model);
-    //         setState(() {
-    //           _splashModel = model;
-    //         });
-    //       }
-    //     } else {
-    //       SpHelper.putObject(Constant.key_splash_model, null);
-    //     }
-    //   });
+  static void updateSplashInfo() {
+    String version = spUtils.getString(splash_version) ?? '';
+
+    Future<SplashModel> future = SplashApi.getSplashMode(version);
+    future.then((SplashModel splash) {
+      spUtils.putString(splash_version, splash.version ?? '');
+
+      if (splash.nextShowGuide) {
+        clearSplashAdMode();
+      }
+
+      if (splash.updateAdInfo && splash.adInfo != null) {
+        String _jsonStr = json.encode(splash.adInfo.toJson());
+        spUtils.putString(splash_ad_model, _jsonStr);
+      }
+
+      if (splash.updateGuideInfo && splash.guideInfo != null) {
+        String _jsonStr = json.encode(splash.guideInfo.toJson());
+        spUtils.putString(splash_guide_model, _jsonStr);
+      }
+    }, onError: (error) {
+      print(error);
+    });
   }
 }

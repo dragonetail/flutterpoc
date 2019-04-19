@@ -21,16 +21,20 @@ class SplashModel {
         nextShowGuide = json['nextShowGuide'],
         updateGuideInfo = json['updateGuideInfo'],
         updateAdInfo = json['updateAdInfo'],
-        guideInfo = SplashGuideModel.fromJson(json['guideInfo']),
-        adInfo = SplashAdModel.fromJson(json['adInfo']);
+        guideInfo = json['guideInfo'] == null
+            ? null
+            : SplashGuideModel.fromJson(json['guideInfo']),
+        adInfo = json['adInfo'] == null
+            ? null
+            : SplashAdModel.fromJson(json['adInfo']);
 
   Map<String, dynamic> toJson() => {
         'version': version,
         'nextShowGuide': nextShowGuide,
         'updateGuideInfo': updateGuideInfo,
         'updateAdInfo': updateAdInfo,
-        'guideInfo': guideInfo,
-        'adInfo': adInfo,
+        'guideInfo': guideInfo?.toJson(),
+        'adInfo': adInfo?.toJson(),
       };
 
   @override

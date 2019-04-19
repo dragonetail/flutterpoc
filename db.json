@@ -2,7 +2,27 @@
     "splash": {
         "version": "1.0.0",
         "nextShowGuide": true,
-        "updateGuideInfo": false,
-        "updateAdInfo": false
+        "updateGuideInfo": true,
+        "updateAdInfo": true,
+        "guideInfo": {
+            "isUrl": true,
+            "images": [
+                "https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/guide1.jpg",
+                "https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/guide2.jpg",
+                "https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/guide3.jpg",
+                "https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/guide4.jpg"
+              ],
+              "textInfos":[
+                "当你需要的时候",
+                "陪你一起去流浪",
+                "追逐梦想的方向",
+                "和你一起，扬帆远航"
+              ]
+        },
+        "adInfo":{
+            "title": "带你去旅行",
+            "imageUrl":"https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/ad.jpg",
+            "targetUrl": "https://github.com/dragonetail/flutterpoc/"
+        }
     }
 }

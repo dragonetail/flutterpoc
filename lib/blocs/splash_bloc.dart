@@ -14,11 +14,16 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
   void _init() async {
     //等待SP初始化完毕
     await SpUtils.instance.initializationDone;
-    if (SpService.isSplashAdMode()) {
+    if (SplashService.isSplashAdMode()) {
       this.dispatch(SplashAdEvent());
     } else {
       this.dispatch(SplashGuideEvent());
     }
+
+    //30秒之后获取服务器最新的Splash信息，更新本地存储
+    Future.delayed(const Duration(seconds: 30), () {
+      SplashService.updateSplashInfo();
+    });
   }
 
   @override
@@ -29,7 +34,7 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
 
   Stream<BaseState> _mapSplashGuideEventToState(BaseEvent event) async* {
     SplashGuideModel splashGuideModel =
-        SpService.getSplashGuideModel(SplashGuideModel(
+        SplashService.getSplashGuideModel(SplashGuideModel(
       isUrl: false,
       images: [
         Utils.getImgPath('guide1', format: 'jpg'),
@@ -48,7 +53,7 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
   }
 
   Stream<BaseState> _mapSplashAdEventToState(BaseEvent event) async* {
-    SplashAdModel splashAdModel = SpService.getSplashAdModel(SplashAdModel(
+    SplashAdModel splashAdModel = SplashService.getSplashAdModel(SplashAdModel(
       title: '带你去旅行',
       imageUrl:
           'https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/ad.jpg',

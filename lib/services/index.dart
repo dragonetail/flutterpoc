@@ -1,3 +1,3 @@
-export './sp_service.dart';
+export './splash_service.dart';
 
 
