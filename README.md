@@ -33,6 +33,16 @@
 
 
 
+## 3、BLOC实现APP启动页和广告页
+
+**说明：** 本部分完成部分在分支： <https://github.com/dragonetail/flutterpoc/tree/3-splash_page>
+
+**目标：** 涉及Flutter的Router和Splash Page工作原理，全程使用Bloc模式。
+
+**文档：** [使用BLOC构建SplashPage的实现](./docs/3-splash_page.md)
+
+
+
 ## TODO
 
 - 通过Dict类似模式优化Bloc中mapEventToState的if级联判断模式。
