@@ -20,8 +20,8 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
       this.dispatch(SplashGuideEvent());
     }
 
-    //30秒之后获取服务器最新的Splash信息，更新本地存储
-    Future.delayed(const Duration(seconds: 30), () {
+    //3秒之后获取服务器最新的Splash信息，更新本地存储
+    Future.delayed(const Duration(seconds: 3), () {
       SplashService.updateSplashInfo();
     });
   }

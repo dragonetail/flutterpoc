@@ -7,8 +7,8 @@ class SplashGuideModel {
 
   SplashGuideModel.fromJson(Map<String, dynamic> json)
       : isUrl = json['isUrl'],
-        images = json['images'],
-        textInfos = json['textInfos'];
+        images = json['images'].cast<String>(),
+        textInfos = json['textInfos'].cast<String>();
 
   Map<String, dynamic> toJson() => {
         'tiisUrltle': isUrl,

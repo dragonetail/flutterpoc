@@ -16,10 +16,6 @@ class SplashApi {
       );
       print(response.data);
       return SplashModel.fromJson(response.data);
-      // } on DioError catch (error) {
-      //    print(error);
-      //   return null;
-      // }
     }
   }
 }

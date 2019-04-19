@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpoc/common/index.dart';
-import 'package:flutterpoc/common/index.dart';
 
 class SplashGuidePage extends StatefulWidget {
   SplashGuidePage(
@@ -60,7 +59,7 @@ class _SplashGuidePageState extends State<SplashGuidePage> {
             new Center(
               child: new Text(
                 this.widget.textInfos[i],
-                style: new TextStyle(fontSize: 20.0, color: Colors.white),
+                style: new TextStyle(fontSize: 24.0, color: Colors.white),
               ),
             ),
             new Align(
@@ -101,7 +100,7 @@ class _SplashGuidePageState extends State<SplashGuidePage> {
             new Center(
               child: new Text(
                 this.widget.textInfos[i],
-                style: new TextStyle(fontSize: 20.0, color: Colors.white),
+                style: new TextStyle(fontSize: 24.0, color: Colors.white),
               ),
             )
           ],
