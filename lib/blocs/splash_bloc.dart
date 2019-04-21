@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutterpoc/common/index.dart';
-import 'package:flutterpoc/models/index.dart';
+import 'package:flutterpoc/data/models.dart';
 import 'package:flutterpoc/services/index.dart';
 
 class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
@@ -14,7 +14,7 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
   void _init() async {
     //等待SP初始化完毕
     await SpUtils.instance.initializationDone;
-    if (SplashService.isSplashAdMode()) {
+    if (SplashService.isSplashModeAd()) {
       this.dispatch(SplashAdEvent());
     } else {
       this.dispatch(SplashGuideEvent());
@@ -33,8 +33,8 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
       };
 
   Stream<BaseState> _mapSplashGuideEventToState(BaseEvent event) async* {
-    SplashGuideModel splashGuideModel =
-        SplashService.getSplashGuideModel(SplashGuideModel(
+    SplashGuide splashGuide =
+        SplashService.getSplashGuide(SplashGuide(
       isUrl: false,
       images: [
         Utils.getImgPath('guide1', format: 'jpg'),
@@ -42,18 +42,18 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
         Utils.getImgPath('guide3', format: 'jpg'),
         Utils.getImgPath('guide4', format: 'jpg'),
       ],
-      textInfos: [
+      texts: [
         "在你需要的每个地方",
         "载你去往每个地方",
         "懂你，更懂你所行",
         "因为在意，所以用心",
       ],
     ));
-    yield SplashGuideState(splashGuideModel);
+    yield SplashGuideState(splashGuide);
   }
 
   Stream<BaseState> _mapSplashAdEventToState(BaseEvent event) async* {
-    SplashAdModel splashAdModel = SplashService.getSplashAdModel(SplashAdModel(
+    SplashAd splashAdModel = SplashService.getSplashAd(SplashAd(
       title: '带你去旅行',
       imageUrl:
           'https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/ad.jpg',
@@ -74,13 +74,13 @@ class SplashInitialState extends BaseState {
 }
 
 class SplashGuideState extends BaseState {
-  final SplashGuideModel splashGuideModel;
+  final SplashGuide splashGuide;
 
-  SplashGuideState(this.splashGuideModel) : super([splashGuideModel]);
+  SplashGuideState(this.splashGuide) : super([splashGuide]);
 }
 
 class SplashAdState extends BaseState {
-  final SplashAdModel splashAdModel;
+  final SplashAd splashAdModel;
 
   SplashAdState(this.splashAdModel) : super([splashAdModel]);
 }

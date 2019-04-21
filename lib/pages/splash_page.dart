@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterpoc/common/index.dart';
-import 'package:flutterpoc/models/index.dart';
+import 'package:flutterpoc/data/models.dart';
 import 'package:flutterpoc/blocs/index.dart';
 import 'package:flutterpoc/services/index.dart';
 
@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Widget buildSplashAdWidget(SplashAdState state) {
-    SplashAdModel splashAdModel = state.splashAdModel;
+    SplashAd splashAdModel = state.splashAdModel;
     return SplashADPage(
       adImageUrl: splashAdModel.imageUrl,
       skipActionTitle: '跳过',
@@ -46,16 +46,16 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Widget buildSplashGuideWidget(SplashGuideState state) {
-    SplashGuideModel splashGuideModel = state.splashGuideModel;
+    SplashGuide splashGuideModel = state.splashGuide;
     return SplashGuidePage(
         images: splashGuideModel.images,
-        textInfos: splashGuideModel.textInfos,
+        textInfos: splashGuideModel.texts,
         nextActionTitle: '立即启程',
         nextAction: _nextActionFromGuide);
   }
 
   void _nextActionFromGuide() {
-    SplashService.setSplashAdMode();
+    SplashService.setSplashModeAd();
     Navigator.of(context).pushReplacementNamed('/Main');
   }
 
@@ -67,7 +67,7 @@ class _SplashPageState extends State<SplashPage> {
     if (!(_splashBloc.currentState is SplashAdState)) {
       return;
     }
-    SplashAdModel splashAdModel =
+    SplashAd splashAdModel =
         (_splashBloc.currentState as SplashAdState).splashAdModel;
 
     Navigator.of(context).pushReplacementNamed('/Main');

@@ -1,43 +1,43 @@
 import 'dart:convert';
 
-import 'package:flutterpoc/models/index.dart';
+import 'package:flutterpoc/data/models.dart';
 import 'package:flutterpoc/common/index.dart';
 import 'package:flutterpoc/api/index.dart';
 
 class SplashService {
   static const String splash_version = 'splash.version';
-  static const String splash_ad_mode = 'splash.ad.mode';
-  static const String splash_ad_model = 'splash.ad.model';
-  static const String splash_guide_model = 'splash.guide.model';
+  static const String splash_mode = 'splash.mode.ad';
+  static const String splash_ad = 'splash.ad';
+  static const String splash_guide = 'splash.guide';
 
   static final SpUtils spUtils = SpUtils.instance;
 
   static bool isSplashAdMode() {
-    return spUtils.getBool(splash_ad_mode);
+    return spUtils.getBool(splash_mode);
   }
 
   static void clearSplashAdMode() {
-    spUtils.remove(splash_ad_mode);
+    spUtils.remove(splash_mode);
   }
 
   static void setSplashAdMode() {
-    spUtils.putBool(splash_ad_mode, true);
+    spUtils.putBool(splash_mode, true);
   }
 
-  static SplashAdModel getSplashAdModel([SplashAdModel defaultValue]) {
-    String _splashModel = spUtils.getString(splash_ad_model);
-    if (CommonUtils.isNotEmpty(_splashModel)) {
-      Map userMap = json.decode(_splashModel);
-      return SplashAdModel.fromJson(userMap);
+  static SplashAd getSplashAd([SplashAd defaultValue]) {
+    String _splash = spUtils.getString(splash_ad);
+    if (CommonUtils.isNotEmpty(_splash)) {
+      Map userMap = json.decode(_splash);
+      return SplashAd.fromJson(userMap);
     }
     return defaultValue;
   }
 
-  static SplashGuideModel getSplashGuideModel([SplashGuideModel defaultValue]) {
-    String _splashModel = spUtils.getString(splash_guide_model);
-    if (CommonUtils.isNotEmpty(_splashModel)) {
-      Map userMap = json.decode(_splashModel);
-      return SplashGuideModel.fromJson(userMap);
+  static SplashGuide getSplashGuide([SplashGuide defaultValue]) {
+    String _splash = spUtils.getString(splash_guide);
+    if (CommonUtils.isNotEmpty(_splash)) {
+      Map userMap = json.decode(_splash);
+      return SplashGuide.fromJson(userMap);
     }
     return defaultValue;
   }
@@ -45,22 +45,22 @@ class SplashService {
   static void updateSplashInfo() {
     String version = spUtils.getString(splash_version) ?? '';
 
-    Future<SplashModel> future = SplashApi.getSplashMode(version);
-    future.then((SplashModel splash) {
+    Future<Splash> future = SplashApi.getSplashMode(version);
+    future.then((Splash splash) {
       spUtils.putString(splash_version, splash.version ?? '');
 
       if (splash.nextShowGuide) {
         clearSplashAdMode();
       }
 
-      if (splash.updateAdInfo && splash.adInfo != null) {
-        String _jsonStr = json.encode(splash.adInfo.toJson());
-        spUtils.putString(splash_ad_model, _jsonStr);
+      if (splash.updateAd && splash.ad != null) {
+        String _jsonStr = json.encode(splash.ad.toJson());
+        spUtils.putString(splash_ad, _jsonStr);
       }
 
-      if (splash.updateGuideInfo && splash.guideInfo != null) {
-        String _jsonStr = json.encode(splash.guideInfo.toJson());
-        spUtils.putString(splash_guide_model, _jsonStr);
+      if (splash.updateGuide && splash.guide != null) {
+        String _jsonStr = json.encode(splash.guide.toJson());
+        spUtils.putString(splash_guide, _jsonStr);
       }
     }, onError: (error) {
       print(error);

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutterpoc/common/index.dart';
 import 'package:flutterpoc/pages/index.dart';
-
+// import 'package:flutter/rendering.dart';
 
 
 void main() async {
   BlocSupervisor().delegate = SimpleBlocDelegate();
 
+  // debugPaintSizeEnabled=true;
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,8 +22,11 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/Main': (ctx) => CounterPage(),
+        '/Login': (ctx) => LoginPage(),
+        '/Signup': (ctx) => SignupAndResetPasswordPage(isSignup: true),
+        '/ResetPassword': (ctx) => SignupAndResetPasswordPage(isSignup: false),
+        '/Splash': (ctx) => SplashPage(),
       },
-      // home: CounterPage(),
       home: SplashPage(),
     );
   }

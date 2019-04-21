@@ -1,14 +1,15 @@
-import './index.dart';
+import './splash_ad_model.dart';
+import './splash_guide_model.dart';
 
-class SplashModel {
+class Splash {
   String version;
   bool nextShowGuide;
   bool updateGuideInfo;
   bool updateAdInfo;
-  SplashGuideModel guideInfo;
-  SplashAdModel adInfo;
+  SplashGuide guideInfo;
+  SplashAd adInfo;
 
-  SplashModel(
+  Splash(
       {this.version,
       this.nextShowGuide,
       this.updateGuideInfo,
@@ -16,17 +17,17 @@ class SplashModel {
       this.guideInfo,
       this.adInfo});
 
-  SplashModel.fromJson(Map<String, dynamic> json)
+  Splash.fromJson(Map<String, dynamic> json)
       : version = json['version'],
         nextShowGuide = json['nextShowGuide'],
         updateGuideInfo = json['updateGuideInfo'],
         updateAdInfo = json['updateAdInfo'],
         guideInfo = json['guideInfo'] == null
             ? null
-            : SplashGuideModel.fromJson(json['guideInfo']),
+            : SplashGuide.fromJson(json['guideInfo']),
         adInfo = json['adInfo'] == null
             ? null
-            : SplashAdModel.fromJson(json['adInfo']);
+            : SplashAd.fromJson(json['adInfo']);
 
   Map<String, dynamic> toJson() => {
         'version': version,
