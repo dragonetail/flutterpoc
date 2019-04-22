@@ -53,13 +53,13 @@ class SplashBloc extends BaseBloc<BaseEvent, BaseState> {
   }
 
   Stream<BaseState> _mapSplashAdEventToState(BaseEvent event) async* {
-    SplashAd splashAdModel = SplashService.getSplashAd(SplashAd(
+    SplashAd splashAd = SplashService.getSplashAd(SplashAd(
       title: '带你去旅行',
       imageUrl:
           'https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/ad.jpg',
       targetUrl: 'https://github.com/dragonetail/flutterpoc/',
     ));
-    yield SplashAdState(splashAdModel);
+    yield SplashAdState(splashAd);
   }
 }
 
@@ -80,7 +80,7 @@ class SplashGuideState extends BaseState {
 }
 
 class SplashAdState extends BaseState {
-  final SplashAd splashAdModel;
+  final SplashAd splashAd;
 
-  SplashAdState(this.splashAdModel) : super([splashAdModel]);
+  SplashAdState(this.splashAd) : super([splashAd]);
 }

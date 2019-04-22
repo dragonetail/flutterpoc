@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage>
       print('Email: ${_data.mobile}');
       print('Password: ${_data.password}');
 
-      Navigator.of(context).pushReplacementNamed('/Main');
+      Navigator.of(context).pushReplacementNamed('/main');
     }
   }
 
@@ -185,7 +185,7 @@ class _LoginPageState extends State<LoginPage>
                     children: <Widget>[
                       FlatButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/Signup');
+                          Navigator.of(context).pushNamed('/signup');
                         },
                         child: Text(
                           "新账号注册",
@@ -203,7 +203,7 @@ class _LoginPageState extends State<LoginPage>
                     children: <Widget>[
                       FlatButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/ResetPassword');
+                          Navigator.of(context).pushNamed('/resetPassword');
                         },
                         child: Text(
                           "忘记密码?",

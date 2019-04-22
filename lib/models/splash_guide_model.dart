@@ -1,11 +1,11 @@
-class SplashGuideModel {
+class SplashGuide {
   bool isUrl;
   List<String> images;
   List<String> textInfos;
 
-  SplashGuideModel({this.isUrl, this.images, this.textInfos});
+  SplashGuide({this.isUrl, this.images, this.textInfos});
 
-  SplashGuideModel.fromJson(Map<String, dynamic> json)
+  SplashGuide.fromJson(Map<String, dynamic> json)
       : isUrl = json['isUrl'],
         images = json['images'].cast<String>(),
         textInfos = json['textInfos'].cast<String>();

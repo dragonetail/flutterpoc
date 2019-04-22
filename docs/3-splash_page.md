@@ -588,11 +588,11 @@
    
      void _nextActionFromGuide() {
        SplashService.setSplashAdMode();
-       Navigator.of(context).pushReplacementNamed('/Main');
+       Navigator.of(context).pushReplacementNamed('/main');
      }
    
      void _skipAction() {
-       Navigator.of(context).pushReplacementNamed('/Main');
+       Navigator.of(context).pushReplacementNamed('/main');
      }
    
      void _adAction() {
@@ -602,7 +602,7 @@
        SplashAdModel splashAdModel =
            (_splashBloc.currentState as SplashAdState).splashAdModel;
    
-       Navigator.of(context).pushReplacementNamed('/Main');
+       Navigator.of(context).pushReplacementNamed('/main');
        NavigatorUtil.pushWeb(context,
            title: splashAdModel.title, url: splashAdModel.targetUrl);
      }
@@ -630,7 +630,7 @@
            primarySwatch: Colors.blue,
          ),
          routes: {
-           '/Main': (ctx) => CounterPage(),
+           '/main': (ctx) => CounterPage(),
          },
          home: SplashPage(),
        );

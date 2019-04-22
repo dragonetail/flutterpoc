@@ -34,9 +34,9 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Widget buildSplashAdWidget(SplashAdState state) {
-    SplashAd splashAdModel = state.splashAdModel;
+    SplashAd splashAd = state.splashAd;
     return SplashADPage(
-      adImageUrl: splashAdModel.imageUrl,
+      adImageUrl: splashAd.imageUrl,
       skipActionTitle: '跳过',
       skipAction: _skipAction,
       adAction: _adAction,
@@ -46,33 +46,33 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Widget buildSplashGuideWidget(SplashGuideState state) {
-    SplashGuide splashGuideModel = state.splashGuide;
+    SplashGuide splashGuide = state.splashGuide;
     return SplashGuidePage(
-        images: splashGuideModel.images,
-        textInfos: splashGuideModel.texts,
+        images: splashGuide.images,
+        textInfos: splashGuide.texts,
         nextActionTitle: '立即启程',
         nextAction: _nextActionFromGuide);
   }
 
   void _nextActionFromGuide() {
     SplashService.setSplashModeAd();
-    Navigator.of(context).pushReplacementNamed('/Main');
+    Navigator.of(context).pushReplacementNamed('/main');
   }
 
   void _skipAction() {
-    Navigator.of(context).pushReplacementNamed('/Main');
+    Navigator.of(context).pushReplacementNamed('/main');
   }
 
   void _adAction() {
     if (!(_splashBloc.currentState is SplashAdState)) {
       return;
     }
-    SplashAd splashAdModel =
-        (_splashBloc.currentState as SplashAdState).splashAdModel;
+    SplashAd splashAd =
+        (_splashBloc.currentState as SplashAdState).splashAd;
 
-    Navigator.of(context).pushReplacementNamed('/Main');
+    Navigator.of(context).pushReplacementNamed('/main');
     NavigatorUtil.pushWeb(context,
-        title: splashAdModel.title, url: splashAdModel.targetUrl);
+        title: splashAd.title, url: splashAd.targetUrl);
   }
 
   @override

@@ -93,7 +93,7 @@ class _SignupAndResetPasswordPageState extends State<SignupAndResetPasswordPage>
       print('Password: ${_data.password}');
 
       // widget.isSignup? '注册':'重置密码'
-      Navigator.of(context).pushReplacementNamed('/Main');
+      Navigator.of(context).pushReplacementNamed('/main');
     }
   }
 

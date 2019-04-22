@@ -1,11 +1,11 @@
-class SplashAdModel {
+class SplashAd {
   String title;
   String imageUrl;
   String targetUrl;
 
-  SplashAdModel({this.title, this.imageUrl, this.targetUrl});
+  SplashAd({this.title, this.imageUrl, this.targetUrl});
 
-  SplashAdModel.fromJson(Map<String, dynamic> json)
+  SplashAd.fromJson(Map<String, dynamic> json)
       : title = json['title'],
         imageUrl = json['imageUrl'],
         targetUrl = json['targetUrl'];

@@ -21,13 +21,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/Main': (ctx) => CounterPage(),
+        '/main': (ctx) => HomePage(),
         '/Login': (ctx) => LoginPage(),
-        '/Signup': (ctx) => SignupAndResetPasswordPage(isSignup: true),
-        '/ResetPassword': (ctx) => SignupAndResetPasswordPage(isSignup: false),
-        '/Splash': (ctx) => SplashPage(),
+        '/signup': (ctx) => SignupAndResetPasswordPage(isSignup: true),
+        '/resetPassword': (ctx) => SignupAndResetPasswordPage(isSignup: false),
+        '/splash': (ctx) => SplashPage(),
+        "/settings": (ctx) => SettingsPage(),
       },
-      home: SplashPage(),
+      home: HomePage(),
     );
   }
 }

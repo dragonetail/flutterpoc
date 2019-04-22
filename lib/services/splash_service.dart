@@ -6,22 +6,22 @@ import 'package:flutterpoc/api/index.dart';
 
 class SplashService {
   static const String splash_version = 'splash.version';
-  static const String splash_mode = 'splash.mode.ad';
+  static const String splash_mode_ad = 'splash.mode.ad';
   static const String splash_ad = 'splash.ad';
   static const String splash_guide = 'splash.guide';
 
   static final SpUtils spUtils = SpUtils.instance;
 
-  static bool isSplashAdMode() {
-    return spUtils.getBool(splash_mode);
+  static bool isSplashModeAd() {
+    return spUtils.getBool(splash_mode_ad);
   }
 
-  static void clearSplashAdMode() {
-    spUtils.remove(splash_mode);
+  static void clearSplashModeAd() {
+    spUtils.remove(splash_mode_ad);
   }
 
-  static void setSplashAdMode() {
-    spUtils.putBool(splash_mode, true);
+  static void setSplashModeAd() {
+    spUtils.putBool(splash_mode_ad, true);
   }
 
   static SplashAd getSplashAd([SplashAd defaultValue]) {
@@ -50,7 +50,7 @@ class SplashService {
       spUtils.putString(splash_version, splash.version ?? '');
 
       if (splash.nextShowGuide) {
-        clearSplashAdMode();
+        clearSplashModeAd();
       }
 
       if (splash.updateAd && splash.ad != null) {
