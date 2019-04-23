@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_whatsnew/flutter_whatsnew.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final _auth = ScopedModel.of<AuthModel>(context, rebuildOnChange: true);

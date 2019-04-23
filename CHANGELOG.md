@@ -1,7 +1,11 @@
+## [0.0.7] - 侧栏菜单和设定画面
+
+* 废弃BLOC架构，使用scoped_model实现Counter模式。
+
 ## [0.0.6] - 侧栏菜单和设定画面
 
 * 加入侧栏菜单和设定画面UI实现
-* Counter页面两个PaddingFloatingActionButton出现画面迁移时异常，原因为FloatingActionButton中的Hero必须分别设定才能正常处理画面迁移时UI转换工作
+* Counter页面两个FloatingActionButton出现画面迁移时异常，原因为FloatingActionButton中的Hero必须分别设定才能正常处理画面迁移时UI转换工作
 
 ## [0.0.5] - 登录页
 

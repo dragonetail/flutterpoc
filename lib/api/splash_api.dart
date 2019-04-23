@@ -1,5 +1,5 @@
 import './http_dio.dart';
-import 'package:flutterpoc/data/models.dart';
+import 'package:flutterpoc/data/beans.dart';
 
 class SplashApi {
   //Online JSON REST mock server, all data is in db.json

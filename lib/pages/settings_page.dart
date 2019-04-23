@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:native_widgets/native_widgets.dart';
-// import 'package:persist_theme/persist_theme.dart';
+import 'package:persist_theme/persist_theme.dart';
 // import 'package:scoped_model/scoped_model.dart';
 
 // import '../../constants.dart';
@@ -46,7 +46,7 @@ class SettingsPage extends StatelessWidget {
                 // onChanged: _auth.handleIsBioSetup,
                 // value: _auth.isBioSetup,
                 onChanged: (value)=>{
-                  
+
                 },
                 value: true,
               ),
@@ -72,12 +72,12 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             Divider(height: 20.0),
-            // DarkModeSwitch(),
-            // TrueBlackSwitch(),
-            // CustomThemeSwitch(),
-            // PrimaryColorPicker(),
-            // AccentColorPicker(),
-            // DarkAccentColorPicker(),
+            DarkModeSwitch(),
+            TrueBlackSwitch(),
+            CustomThemeSwitch(),
+            PrimaryColorPicker(),
+            AccentColorPicker(),
+            DarkAccentColorPicker(),
             Divider(height: 20.0),
           ],
         ),

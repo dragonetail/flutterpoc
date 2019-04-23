@@ -19,6 +19,7 @@ class PaddingFloatingActionButton extends StatelessWidget {
       child: FloatingActionButton(
         child: Icon(icon),
         onPressed: () => onPressed(),
+        heroTag: icon.codePoint,
       ),
     );
   }

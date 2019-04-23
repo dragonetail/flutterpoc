@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterpoc/common/index.dart';
-import 'package:flutterpoc/data/models.dart';
-import 'package:flutterpoc/blocs/index.dart';
+import 'package:flutterpoc/data/beans.dart';
 import 'package:flutterpoc/services/index.dart';
 
-class SplashPage extends StatefulWidget {
+class SplashPage extends  StatefulWidget {
   SplashPage({Key key}) : super(key: key);
 
   @override
@@ -13,28 +11,16 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final SplashBloc _splashBloc = SplashBloc();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<BaseEvent, BaseState>(
-        bloc: _splashBloc,
-        builder: (BuildContext context, BaseState baseState) {
-          if (baseState is SplashGuideState) {
-            return buildSplashGuideWidget(baseState);
-          } else if (baseState is SplashAdState) {
-            return buildSplashAdWidget(baseState);
-          } else {
-            return Container();
-          }
-        },
-      ),
-    );
+    if (SplashService.isSplashModeAd()) {
+      return buildSplashAdWidget(SplashService.getSplashAd());
+    } else {
+      return buildSplashGuideWidget(SplashService.getSplashGuide());
+    }
   }
 
-  Widget buildSplashAdWidget(SplashAdState state) {
-    SplashAd splashAd = state.splashAd;
+  Widget buildSplashAdWidget(SplashAd splashAd) {
     return SplashADPage(
       adImageUrl: splashAd.imageUrl,
       skipActionTitle: '跳过',
@@ -45,8 +31,7 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-  Widget buildSplashGuideWidget(SplashGuideState state) {
-    SplashGuide splashGuide = state.splashGuide;
+  Widget buildSplashGuideWidget(SplashGuide splashGuide) {
     return SplashGuidePage(
         images: splashGuide.images,
         textInfos: splashGuide.texts,
@@ -64,11 +49,10 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _adAction() {
-    if (!(_splashBloc.currentState is SplashAdState)) {
+    if (!(SplashService.isSplashModeAd())) {
       return;
     }
-    SplashAd splashAd =
-        (_splashBloc.currentState as SplashAdState).splashAd;
+    SplashAd splashAd = SplashService.getSplashAd();
 
     Navigator.of(context).pushReplacementNamed('/main');
     NavigatorUtil.pushWeb(context,
@@ -77,7 +61,6 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void dispose() {
-    _splashBloc.dispose();
     super.dispose();
   }
 }

@@ -1,5 +1,5 @@
-export './home.dart';
+export './home_page.dart';
 export './splash_page.dart';
 export './login_page.dart';
 export './signup_and_reset_password_page.dart';
-export './settings.dart';
+export './settings_page.dart';

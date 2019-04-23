@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterpoc/blocs/index.dart';
-import 'package:flutterpoc/common/index.dart';
+import 'package:flutterpoc/data/models.dart';
 
 class CountingText extends StatelessWidget {
   CountingText({
@@ -10,13 +8,10 @@ class CountingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CounterBloc _counterBloc = BlocProvider.of<CounterBloc>(context);
-
-    return BlocBuilder<BaseEvent, BaseState>(
-      bloc: _counterBloc,
-      builder: (BuildContext context, BaseState baseState) {
+    return  ScopedModelDescendant<CounterModel>(
+      builder: (context, child, model) {
         return Text(
-          '${(baseState as CountingState).counter}',
+          '${model.counter}',
           style: TextStyle(fontSize: 24.0),
         );
       },

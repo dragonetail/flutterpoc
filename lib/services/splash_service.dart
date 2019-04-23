@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutterpoc/data/models.dart';
+import 'package:flutterpoc/data/beans.dart';
 import 'package:flutterpoc/common/index.dart';
 import 'package:flutterpoc/api/index.dart';
 
@@ -24,22 +24,41 @@ class SplashService {
     spUtils.putBool(splash_mode_ad, true);
   }
 
-  static SplashAd getSplashAd([SplashAd defaultValue]) {
+  static SplashAd getSplashAd() {
     String _splash = spUtils.getString(splash_ad);
     if (CommonUtils.isNotEmpty(_splash)) {
       Map userMap = json.decode(_splash);
       return SplashAd.fromJson(userMap);
     }
-    return defaultValue;
+    return SplashAd(
+      title: '带你去旅行',
+      imageUrl:
+          'https://raw.githubusercontent.com/dragonetail/flutterpoc/master/assets/images/3.0x/ad.jpg',
+      targetUrl: 'https://github.com/dragonetail/flutterpoc/',
+    );
   }
 
-  static SplashGuide getSplashGuide([SplashGuide defaultValue]) {
+  static SplashGuide getSplashGuide() {
     String _splash = spUtils.getString(splash_guide);
     if (CommonUtils.isNotEmpty(_splash)) {
       Map userMap = json.decode(_splash);
       return SplashGuide.fromJson(userMap);
     }
-    return defaultValue;
+    return SplashGuide(
+      isUrl: false,
+      images: [
+        Utils.getImgPath('guide1', format: 'jpg'),
+        Utils.getImgPath('guide2', format: 'jpg'),
+        Utils.getImgPath('guide3', format: 'jpg'),
+        Utils.getImgPath('guide4', format: 'jpg'),
+      ],
+      texts: [
+        "在你需要的每个地方",
+        "载你去往每个地方",
+        "懂你，更懂你所行",
+        "因为在意，所以用心",
+      ],
+    );
   }
 
   static void updateSplashInfo() {

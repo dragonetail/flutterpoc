@@ -24,7 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   validate: ^1.7.0
-  flutter_bloc: ^0.9.1
+  #flutter_bloc: ^0.9.1
   meta: ">=1.1.6 <2.0.0"
   equatable: ^0.2.0
 
@@ -55,6 +55,18 @@ dependencies:
   flutter_whatsnew: ^0.3.0
   # https://pub.dartlang.org/packages/native_widgets
   native_widgets: ^1.2.0
+  # https://github.com/AppleEducate/plugins/tree/master/packages/persist_theme
+  persist_theme: ^1.0.1+1
+  # https://github.com/brianegan/scoped_model
+  scoped_model: ^1.0.1
+  # # https://github.com/flutter/plugins
+  # local_auth: ^0.4.0+1
+  # # https://github.com/AppleEducate/plugins/tree/master/packages/get_version
+  # get_version: ^0.1.0
+  # # https://github.com/AppleEducate/plugins/tree/master/packages/app_review
+  # app_review: ^0.1.1+1
+  # # https://github.com/AppleEducate/plugins/tree/master/packages/floating_search_bar
+  # floating_search_bar: ^0.2.0
 
 
 dev_dependencies:
