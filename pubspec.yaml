@@ -60,7 +60,7 @@ dependencies:
   # https://github.com/brianegan/scoped_model
   scoped_model: ^1.0.1
   # # https://github.com/flutter/plugins
-  # local_auth: ^0.4.0+1
+  local_auth: ^0.4.0+1
   # # https://github.com/AppleEducate/plugins/tree/master/packages/get_version
   # get_version: ^0.1.0
   # # https://github.com/AppleEducate/plugins/tree/master/packages/app_review
